@@ -8,21 +8,21 @@ namespace KomodoCafe
 {
     public class MenuRepo
     {
-        private List<Menu> menuItems = new List<Menu>();
+        private List<OrderMenu> menuItems = new List<OrderMenu>();
 
-        public void AddMenuItem(Menu menuItem)
+        public void AddMenuItem(OrderMenu menuItem)
         {
             menuItems.Add(menuItem);
         }
 
-        public List<Menu> GetMenuItems()
+        public List<OrderMenu> GetMenuItems()
         {
             return menuItems;
         }
 
         public bool RemoveMenuItem(int number)
         {
-            Menu item = GetMenuItemByNumber(number);
+            OrderMenu item = GetMenuItemByNumber(number);
             if (item != null)
             {
                 int initialCount = menuItems.Count;
@@ -39,9 +39,9 @@ namespace KomodoCafe
             return false;
         }
 
-        public Menu GetMenuItemByNumber(int number)
+        public OrderMenu GetMenuItemByNumber(int number)
         {
-            foreach (Menu item in menuItems)
+            foreach (OrderMenu item in menuItems)
             {
                 if (item.ItemNumber == number)
                 {

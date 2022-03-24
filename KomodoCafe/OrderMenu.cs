@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KomodoCafe
 {
-    public class Menu
+    public class OrderMenu
     {
         public int ItemNumber { get; set; }
         public string MealName { get; set; }
@@ -14,12 +14,12 @@ namespace KomodoCafe
         public List<string> Ingredients { get; set; }
         public decimal Price { get; set; }
 
-        public Menu()
+        public OrderMenu()
         {
             Ingredients = new List<string>();
         }
 
-        public Menu(int num, string name, string desc, List<string> ingredients, decimal price)
+        public OrderMenu(int num, string name, string desc, List<string> ingredients, decimal price)
         {
             ItemNumber = num;
             MealName = name;
@@ -30,9 +30,9 @@ namespace KomodoCafe
 
         public override bool Equals(object obj)
         {
-            if (obj is Menu)
+            if (obj is OrderMenu)
             {
-                var that = obj as Menu;
+                var that = obj as OrderMenu;
                 return this.ItemNumber == that.ItemNumber
                     && this.MealName == that.MealName
                     && this.Description == that.Description

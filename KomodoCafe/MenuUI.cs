@@ -47,7 +47,7 @@ namespace KomodoCafe
         private bool AddMenuItems()
         {
             Console.Clear();
-            Menu newItem = new Menu();
+            OrderMenu newItem = new OrderMenu();
             Console.WriteLine("Menu Item Number: (q to quit)");
             newItem.ItemNumber = GetIntResponse("q", "Menu Item Number: (q to quit)");
             if (newItem.ItemNumber == 0)
@@ -86,7 +86,7 @@ namespace KomodoCafe
 
         private void DeleteMenuItems()
         {
-            Menu item = UserSelectMenuItem();
+            OrderMenu item = UserSelectMenuItem();
             GetMenuItems(item);
             Console.WriteLine("Are you sure you want to remove this item?");
             if (GetYesNoResponse("y", "n"))
@@ -99,14 +99,14 @@ namespace KomodoCafe
         private void GetMenuItems()
         {
             Console.WriteLine();
-            List<Menu> items = menuRepo.GetMenuItems();
-            foreach (Menu item in items)
+            List<OrderMenu> items = menuRepo.GetMenuItems();
+            foreach (OrderMenu item in items)
             {
                 GetMenuItems(item);
             }
         }
 
-        private void GetMenuItems(Menu item)
+        private void GetMenuItems(OrderMenu item)
         {
             Console.WriteLine($"{item.ItemNumber}.\t{item.MealName}${item.Price}\n{item.Description}");
             foreach (string ingredient in item.Ingredients)
@@ -115,7 +115,7 @@ namespace KomodoCafe
             }
         }
 
-        private void AddIngredients(Menu newItem)
+        private void AddIngredients(OrderMenu newItem)
         {
             Console.WriteLine("Add Ingredient: (q to quit, f to finish)");
             string response = GetResponse("q");
@@ -129,14 +129,14 @@ namespace KomodoCafe
             }
         }
 
-        private Menu UserSelectMenuItem()
+        private OrderMenu UserSelectMenuItem()
         {
             GetMenuItems();
             Console.WriteLine("Menu item id (q to quit):");
             int response = GetIntResponse("q");
             if (response != -1)
             {
-                Menu item = menuRepo.GetMenuItemByNumber(response);
+                OrderMenu item = menuRepo.GetMenuItemByNumber(response);
                 if (item != null)
                 {
                     return item;
